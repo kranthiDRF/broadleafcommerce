@@ -24,9 +24,7 @@
             classpath:/bl-pricelist-applicationContext.xml
             classpath:/bl-custom-field-applicationContext.xml
             classpath:/bl-advanced-cms-applicationContext.xml
-            classpath:/bl-advancedOffer-applicationContext.xml
             classpath:/applicationContext.xml
-            classpath:/bl-contentTest-applicationContext.xml
             classpath:/bl-account-credit-applicationContext.xml
             classpath:/bl-advanced-inventory-applicationContext.xml
             /WEB-INF/applicationContext-datasource.xml
@@ -109,7 +107,6 @@
             <param-value>
                 classpath:/applicationContext-servlet-cms-contentClient.xml
                 classpath:/bl-advanced-cms-applicationContext-servlet.xml
-                classpath:/bl-contentTest-applicationContext-servlet.xml
                 /WEB-INF/applicationContext-servlet.xml
                 classpath:/bl-enterprise-applicationContext-servlet.xml
             </param-value>

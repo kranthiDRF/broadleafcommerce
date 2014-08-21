@@ -31,12 +31,8 @@
             classpath:/bl-custom-field-admin-applicationContext.xml
             classpath:/bl-advanced-cms-applicationContext.xml
             classpath:/bl-advanced-cms-admin-applicationContext.xml
-            classpath:/bl-advancedOffer-applicationContext.xml
-            classpath:/bl-advancedOffer-admin-applicationContext.xml
 <!--             classpath:/bl-subscription-applicationContext.xml
             classpath:/bl-subscription-admin-applicationContext.xml -->
-            classpath:/bl-contentTest-applicationContext.xml
-            classpath:/bl-contentTest-admin-applicationContext.xml             
             classpath:/bl-account-credit-applicationContext.xml
             classpath:/bl-account-credit-admin-applicationContext.xml
             classpath:/bl-advanced-inventory-admin-applicationContext.xml
@@ -123,7 +119,6 @@
                 classpath:/bl-advanced-cms-admin-applicationContext-servlet.xml
                 classpath:/bl-common-enterprise-admin-applicationContext-servlet.xml
                 classpath:/bl-enterprise-admin-applicationContext-servlet.xml
-                classpath:/bl-contentTest-admin-applicationContext-servlet.xml
                 classpath:/bl-account-credit-admin-applicationContext-servlet.xml
                 classpath:/bl-menu-admin-applicationContext-servlet.xml
                 /WEB-INF/applicationContext-servlet-admin.xml

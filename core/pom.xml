@@ -76,14 +76,6 @@
         </dependency>
         <dependency>
             <groupId>com.broadleafcommerce</groupId>
-            <artifactId>broadleaf-advanced-offer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.broadleafcommerce</groupId>
-            <artifactId>broadleaf-contenttests</artifactId>
-        </dependency>        
-        <dependency>
-            <groupId>com.broadleafcommerce</groupId>
             <artifactId>broadleaf-account-credit</artifactId>
         </dependency>
         <dependency>

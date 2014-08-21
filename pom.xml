@@ -12,12 +12,10 @@
     <properties>
         <blc.version>3.2.0-SNAPSHOT</blc.version>
         <broadleaf-menu.version>1.0.0-SNAPSHOT</broadleaf-menu.version>
-        <broadleaf-contenttests.version>2.0.0-SNAPSHOT</broadleaf-contenttests.version>
         <broadleaf-theme.version>1.2.0-SNAPSHOT</broadleaf-theme.version>
         <broadleaf-pricelist.version>1.3.0-SNAPSHOT</broadleaf-pricelist.version>
         <broadleaf-custom-field.version>1.2.0-SNAPSHOT</broadleaf-custom-field.version>
         <broadleaf-advanced-cms.version>1.1.0-SNAPSHOT</broadleaf-advanced-cms.version>
-        <broadleaf-advanced-offer.version>1.0.3-SNAPSHOT</broadleaf-advanced-offer.version>
         <broadleaf-subscription.version>1.1.0-SNAPSHOT</broadleaf-subscription.version>
         <broadleaf-jobs-events.version>1.0.1-SNAPSHOT</broadleaf-jobs-events.version>
         <broadleaf-enterprise.version>1.1.0-SNAPSHOT</broadleaf-enterprise.version>
@@ -226,19 +224,12 @@
             <dependency>
                 <groupId>com.mycompany-enterprise</groupId>
                 <artifactId>core</artifactId>
-                <version>1.0</version>
+                <version>1.1</version>
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
 
             <!--Broadleaf libraries -->
-            <dependency>
-                <groupId>com.broadleafcommerce</groupId>
-                <artifactId>broadleaf-contenttests</artifactId>
-                <version>${broadleaf-contenttests.version}</version>
-                <type>jar</type>
-                <scope>compile</scope>
-            </dependency>               
             <dependency>
                 <groupId>com.broadleafcommerce</groupId>
                 <artifactId>broadleaf-theme</artifactId>
@@ -264,13 +255,6 @@
                 <groupId>com.broadleafcommerce</groupId>
                 <artifactId>broadleaf-advanced-cms</artifactId>
                 <version>${broadleaf-advanced-cms.version}</version>
-                <type>jar</type>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.broadleafcommerce</groupId>
-                <artifactId>broadleaf-advanced-offer</artifactId>
-                <version>${broadleaf-advanced-offer.version}</version>
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
