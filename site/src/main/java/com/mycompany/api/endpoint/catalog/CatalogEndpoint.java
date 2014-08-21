@@ -93,7 +93,7 @@ public class CatalogEndpoint extends
     public List<SkuWrapper> findSkusByProductById(@Context HttpServletRequest request, @PathParam("id") Long id) {
         return super.findSkusByProductById(request, id);
     }
-
+    
     @Override
     @GET
     @Path("product/{id}/defaultSku")

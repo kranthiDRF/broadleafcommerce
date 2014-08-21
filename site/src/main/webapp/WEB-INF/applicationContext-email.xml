@@ -4,8 +4,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
-
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
     <bean id="blRegistrationEmailInfo" parent="blEmailInfo">
         <property name="subject" value="You have successfully registered!"/>        
         <property name="emailTemplate" value="register-email"/>
