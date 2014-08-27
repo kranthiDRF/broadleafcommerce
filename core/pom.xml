@@ -3,9 +3,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.mycompany-enterprise</groupId>
-        <artifactId>evaluation</artifactId>
-        <version>1.1</version>
+        <groupId>com.drf</groupId>
+        <artifactId>digitalcommerce</artifactId>
+        <version>1.0</version>
     </parent>
     <artifactId>core</artifactId>
     <name>core</name>
@@ -56,7 +56,7 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.broadleafcommerce</groupId>
@@ -77,10 +77,6 @@
         <dependency>
             <groupId>com.broadleafcommerce</groupId>
             <artifactId>broadleaf-account-credit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.broadleafcommerce</groupId>
-            <artifactId>broadleaf-advanced-inventory</artifactId>
         </dependency>
         <dependency>
             <groupId>com.broadleafcommerce</groupId>

@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <display-name>mycompany</display-name>
+    <display-name>drf</display-name>
 
     <context-param>
         <param-name>webAppRootKey</param-name>
@@ -26,7 +26,6 @@
             classpath:/bl-advanced-cms-applicationContext.xml
             classpath:/applicationContext.xml
             classpath:/bl-account-credit-applicationContext.xml
-            classpath:/bl-advanced-inventory-applicationContext.xml
             /WEB-INF/applicationContext-datasource.xml
             /WEB-INF/applicationContext-email.xml
             /WEB-INF/applicationContext-security.xml
@@ -100,7 +99,7 @@
          from the Broadleaf CMS such as images. It will match on any URL that contains the static asset
          prefix URL in any depth of it. -->
     <servlet>
-        <servlet-name>mycompany</servlet-name>
+        <servlet-name>drf</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -115,7 +114,7 @@
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>mycompany</servlet-name>
+        <servlet-name>drf</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
@@ -142,7 +141,7 @@
     <env-entry>
         <env-entry-name>appName</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>mycompanySite</env-entry-value>
+        <env-entry-value>drfSite</env-entry-value>
     </env-entry>
  
     <resource-ref>

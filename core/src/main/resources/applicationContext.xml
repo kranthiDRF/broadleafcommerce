@@ -21,7 +21,7 @@
         <!-- Shared properties between admin and site go here -->
 
     <!-- Scan DemoSite Sample Payment Gateway Implementation -->
-    <context:component-scan base-package="com.mycompany.sample" />
+    <context:component-scan base-package="com.drf.sample" />
 
     <context:component-scan base-package="com.broadleafcommerce.demo"/>
 
@@ -52,10 +52,10 @@
         </property>
     </bean>
 
-    <bean class="com.mycompany.sample.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType"/>
+    <bean class="com.drf.sample.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType"/>
 
     <!-- Add Sample Thymeleaf Processor to test Hosted Payment Gateway (e.g. PayPal Express Flow) -->
-    <bean id="myNullPaymentGatewayHostedActionProcessor" class="com.mycompany.sample.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayHostedActionProcessor"/>
+    <bean id="myNullPaymentGatewayHostedActionProcessor" class="com.drf.sample.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayHostedActionProcessor"/>
     <bean id="mySamplePaymentProcessors" class="org.springframework.beans.factory.config.SetFactoryBean">
         <property name="sourceSet">
             <set>
