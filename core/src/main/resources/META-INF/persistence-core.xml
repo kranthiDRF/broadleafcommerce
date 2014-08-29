@@ -6,6 +6,9 @@
              
     <persistence-unit name="blPU" transaction-type="RESOURCE_LOCAL">
         <non-jta-data-source>jdbc/web</non-jta-data-source>
+        <class>com.drf.core.domain.catalog.DRFSku</class>
+        <class>com.drf.core.domain.entitlement.DigitalDownload</class>
+        <class>com.drf.core.domain.entitlement.DigitalDownloadAttribute</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

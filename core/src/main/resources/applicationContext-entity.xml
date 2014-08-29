@@ -20,7 +20,9 @@
         
         <!-- This file will contain bean overrides for extensions of Broadleaf entities -->
         <!-- For example, if you have a custom class that extends CustomerImpl, you would note that here -->
-
-    <bean id="org.broadleafcommerce.common.site.domain.Site"
-                    class="org.broadleafcommerce.common.site.domain.SiteImpl" scope="prototype"/>
+    
+    <!-- The system auto-creates a Sku (the defaultSku when creating a Product is auto-instantated without selecting a type)
+        and it needs to create the correct subclass -->
+    <bean id="org.broadleafcommerce.core.catalog.domain.Sku"
+                    class="com.drf.core.domain.catalog.DRFSku" scope="prototype"/>
 </beans>
