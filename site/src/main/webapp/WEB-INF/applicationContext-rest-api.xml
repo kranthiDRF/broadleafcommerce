@@ -40,4 +40,6 @@
     <!-- Additional considerations MUST be made for implementations that are allowing external access to APIs. -->
     <bean id="blRestCustomerStateFilter" class="org.broadleafcommerce.profile.web.core.security.RestApiCustomerStateFilter"/>
     
+    <bean id="org.broadleafcommerce.core.web.api.wrapper.OrderWrapper" class="com.drf.api.wrapper.order.DRFOrderWrapper" scope="prototype" />
+    
 </beans>

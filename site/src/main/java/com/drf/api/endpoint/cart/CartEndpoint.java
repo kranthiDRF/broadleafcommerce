@@ -16,10 +16,17 @@
 
 package com.drf.api.endpoint.cart;
 
+import org.broadleafcommerce.core.checkout.service.CheckoutService;
+import org.broadleafcommerce.core.checkout.service.exception.CheckoutException;
+import org.broadleafcommerce.core.checkout.service.workflow.CheckoutResponse;
+import org.broadleafcommerce.core.order.domain.Order;
 import org.broadleafcommerce.core.web.api.wrapper.OrderWrapper;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.drf.api.wrapper.order.DRFOrderWrapper;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -50,6 +57,9 @@ import javax.ws.rs.core.UriInfo;
 @Consumes(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 public class CartEndpoint extends org.broadleafcommerce.core.web.api.endpoint.order.CartEndpoint {
 
+    @Resource(name = "blCheckoutService")
+    protected CheckoutService checkoutService;
+    
     @Override
     @GET
     public OrderWrapper findCartForCustomer(@Context HttpServletRequest request) {
@@ -62,7 +72,6 @@ public class CartEndpoint extends org.broadleafcommerce.core.web.api.endpoint.or
         return super.createNewCartForCustomer(request);
     }
 
-    @Override
     @POST
     @Path("{productId}")
     public OrderWrapper addProductToOrder(@Context HttpServletRequest request,
@@ -70,8 +79,29 @@ public class CartEndpoint extends org.broadleafcommerce.core.web.api.endpoint.or
             @PathParam("productId") Long productId,
             @QueryParam("categoryId") Long categoryId,
             @QueryParam("quantity") @DefaultValue("1") int quantity,
-            @QueryParam("priceOrder") @DefaultValue("true") boolean priceOrder) {
-        return super.addProductToOrder(request, uriInfo, productId, categoryId, quantity, priceOrder);
+            @QueryParam("priceOrder") @DefaultValue("true") boolean priceOrder,
+            @QueryParam("immediateCheckout") @DefaultValue("false") boolean immediateCheckout) throws CheckoutException {
+        // First, add the item to the order
+        DRFOrderWrapper singleItemWrapper = (DRFOrderWrapper) super.addProductToOrder(request, uriInfo, productId, categoryId, quantity, priceOrder);
+        if (immediateCheckout) {
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            /// TODO
+            /// This also needs to accept payment and associate it to the order before executing checkout
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            Order order = orderService.findOrderById(singleItemWrapper.getId());
+            
+            // Then immediately check out the order; hopefully without violating Amazon patents!
+            CheckoutResponse response = checkoutService.performCheckout(order);
+            
+            // Finally, wrap the checked out order and return it
+            OrderWrapper result = (OrderWrapper) context.getBean(OrderWrapper.class.getName());
+            result.wrapDetails(response.getOrder(), request);
+            return result;
+        } else {
+            return singleItemWrapper;
+        }
     }
 
     @Override
