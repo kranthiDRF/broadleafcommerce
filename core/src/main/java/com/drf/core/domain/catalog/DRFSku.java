@@ -8,7 +8,7 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.drf.core.domain.entitlement.DigitalDownload;
+import com.drf.core.domain.subscription.Subscription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ public class DRFSku extends SkuImpl {
 
     private static final long serialVersionUID = 1L;
     
-    @OneToMany(mappedBy = "sku", targetEntity = DigitalDownload.class, cascade = { CascadeType.ALL }, orphanRemoval = true)
+    @OneToMany(mappedBy = "sku", targetEntity = Subscription.class, cascade = { CascadeType.ALL }, orphanRemoval = true)
     @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE, region="blProducts")
     @BatchSize(size = 50)
-    @AdminPresentationCollection(friendlyName = "Digital Downloads")
+    @AdminPresentationCollection(friendlyName = "Subscription Data")
     @ClonePolicyCollection
-    protected List<DigitalDownload> digitalDownloads = new ArrayList<DigitalDownload>();
+    protected List<Subscription> subscriptions = new ArrayList<Subscription>();
 
 }

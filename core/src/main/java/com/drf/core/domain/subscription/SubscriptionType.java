@@ -1,33 +1,33 @@
-package com.drf.core.domain.entitlement;
+package com.drf.core.domain.subscription;
 
 import org.broadleafcommerce.common.BroadleafEnumerationType;
 
 import java.util.LinkedHashMap;
 
 
-public class DownloadType implements BroadleafEnumerationType {
+public class SubscriptionType implements BroadleafEnumerationType {
 
-    private static final LinkedHashMap<String, DownloadType> TYPES = new LinkedHashMap<String, DownloadType>();
+    private static final LinkedHashMap<String, SubscriptionType> TYPES = new LinkedHashMap<String, SubscriptionType>();
 
-    public static final DownloadType CLASSIC = new DownloadType("CLASSIC", "Classic");
-    public static final DownloadType FORMULATOR = new DownloadType("FORMULATOR", "Formulator");
-    public static final DownloadType EASYFORM = new DownloadType("EASYFORM", "EasyForm");
-    public static final DownloadType HARNESS_EYE = new DownloadType("HARNESS_EYE", "HarnessEye");
-    public static final DownloadType CLOCKER_REPORTS = new DownloadType("HARNESS_EYE", "HarnessEye");
+    public static final SubscriptionType CLASSIC = new SubscriptionType("CLASSIC", "Classic");
+    public static final SubscriptionType FORMULATOR = new SubscriptionType("FORMULATOR", "Formulator");
+    public static final SubscriptionType EASYFORM = new SubscriptionType("EASYFORM", "EasyForm");
+    public static final SubscriptionType HARNESS_EYE = new SubscriptionType("HARNESS_EYE", "HarnessEye");
+    public static final SubscriptionType CLOCKER_REPORTS = new SubscriptionType("HARNESS_EYE", "HarnessEye");
 
 
-    public static DownloadType getInstance(final String type) {
+    public static SubscriptionType getInstance(final String type) {
         return TYPES.get(type);
     }
 
     private String type;
     private String friendlyType;
 
-    public DownloadType() {
+    public SubscriptionType() {
         //do nothing
     }
 
-    public DownloadType(final String type, final String friendlyType) {
+    public SubscriptionType(final String type, final String friendlyType) {
         this.friendlyType = friendlyType;
         setType(type);
     }
@@ -65,7 +65,7 @@ public class DownloadType implements BroadleafEnumerationType {
             return false;
         if (!getClass().isAssignableFrom(obj.getClass()))
             return false;
-        DownloadType other = (DownloadType) obj;
+        SubscriptionType other = (SubscriptionType) obj;
         if (type == null) {
             if (other.type != null)
                 return false;

@@ -1,4 +1,4 @@
-package com.drf.core.domain.entitlement;
+package com.drf.core.domain.subscription;
 
 import org.broadleafcommerce.common.extensibility.jpa.clone.ClonePolicyMap;
 import org.broadleafcommerce.common.extensibility.jpa.copy.DirectCopyTransform;
@@ -40,27 +40,27 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "DRF_DIGITAL_DOWNLOAD")
+@Table(name = "DRF_SUBSCRIPTION")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "blProducts")
 @AdminPresentationClass(populateToOneFields = PopulateToOneFieldsEnum.FALSE)
 @DirectCopyTransform({
         @DirectCopyTransformMember(templateTokens = DirectCopyTransformTypes.SANDBOX, skipOverlaps=true)
 })
-public class DigitalDownload implements Serializable {
+public class Subscription implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "DigitalDownloadId")
+    @GeneratedValue(generator = "SubscriptionId")
     @GenericGenerator(
-        name = "DigitalDownloadId",
+        name = "SubscriptionId",
         strategy = "org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
         parameters = {
-            @Parameter(name = "segment_value", value = "DigitalDownload"),
-            @Parameter(name = "entity_name", value = "com.drf.core.domain.entitlement.DigitalDownload")
+            @Parameter(name = "segment_value", value = "Subscription"),
+            @Parameter(name = "entity_name", value = "com.drf.core.domain.subscription.Subscription")
         }
     )
-    @Column(name = "DIGITAL_DOWNLOAD_ID")
+    @Column(name = "SUBSCRIPTION_ID")
     @AdminPresentation(visibility = VisibilityEnum.HIDDEN_ALL)
     protected Long id;
     
@@ -72,11 +72,13 @@ public class DigitalDownload implements Serializable {
     @AdminPresentation(friendlyName = "Name", prominent = true, order = 1)
     protected String name;
     
-    @Column(name = "DOWNLOAD_TYPE")
-    @AdminPresentation(friendlyName = "Download Type",
+    @Column(name = "SUBSCRIPTION_TYPE")
+    @AdminPresentation(
+    	order = 2,
+    	friendlyName = "Subscription Type",
         fieldType = SupportedFieldType.BROADLEAF_ENUMERATION,
-        broadleafEnumeration = "com.drf.core.domain.entitlement.DownloadType")
-    protected String downloadType;
+        broadleafEnumeration = "com.drf.core.domain.subscription.SubscriptionType")
+    protected String subscriptionType;
 
     @Column(name = "START_DATE")
     @AdminPresentation(friendlyName = "Access Start Date", order = 100)
@@ -90,22 +92,19 @@ public class DigitalDownload implements Serializable {
     @AdminPresentation(friendlyName = "Access Duration", helpText = "Only duration or start and end date should be specified")
     protected Integer duration;
 
-    @Column(name = "TRACK")
-    @AdminPresentation(friendlyName = "Track", prominent = true, order = 2)
-    protected String track;
-
-    @OneToMany(mappedBy = "digitalDownload", targetEntity = DigitalDownloadAttribute.class, cascade = { CascadeType.ALL }, orphanRemoval = true)
+    @OneToMany(mappedBy = "subscription", targetEntity = SubscriptionOption.class, cascade = { CascadeType.ALL }, orphanRemoval = true)
     @Cache(usage=CacheConcurrencyStrategy.READ_WRITE, region="blProducts")
     @MapKey(name="name")
     @BatchSize(size = 50)
-    @AdminPresentationMap(friendlyName = "Attributes",
-        deleteEntityUponRemove = true, keyPropertyFriendlyName = "Attribute Name",
+    @AdminPresentationMap(friendlyName = "Option",
+        deleteEntityUponRemove = true, keyPropertyFriendlyName = "Option Name",
         keys = {
-            @AdminPresentationMapKey(keyName = "QUANTITY", friendlyKeyName = "Quantity")
+            @AdminPresentationMapKey(keyName = "NUMBER_OF_CARDS", friendlyKeyName = "Number of Cards"),
+            @AdminPresentationMapKey(keyName = "TRACK", friendlyKeyName = "Track")
         }
     )
     @ClonePolicyMap
-    protected Map<String, DigitalDownloadAttribute> attributes = new HashMap<String, DigitalDownloadAttribute>();
+    protected Map<String, SubscriptionOption> options = new HashMap<String, SubscriptionOption>();
 
     public Long getId() {
         return id;
@@ -131,12 +130,12 @@ public class DigitalDownload implements Serializable {
         this.name = name;
     }
 
-    public Map<String, DigitalDownloadAttribute> getAttributes() {
-        return attributes;
+    public Map<String, SubscriptionOption> getOptions() {
+        return options;
     }
 
-    public void setAttributes(Map<String, DigitalDownloadAttribute> attributes) {
-        this.attributes = attributes;
+    public void setOptions(Map<String, SubscriptionOption> options) {
+        this.options = options;
     }
 
 }

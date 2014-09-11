@@ -1,4 +1,4 @@
-package com.drf.core.domain.entitlement;
+package com.drf.core.domain.subscription;
 
 import org.broadleafcommerce.common.extensibility.jpa.copy.DirectCopyTransform;
 import org.broadleafcommerce.common.extensibility.jpa.copy.DirectCopyTransformMember;
@@ -20,42 +20,42 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DRF_DIGITAL_DOWNLOAD_ATTRIBUTE")
+@Table(name = "DRF_SUBSCRIPTION_OPTION")
 @DirectCopyTransform({
     @DirectCopyTransformMember(templateTokens = DirectCopyTransformTypes.SANDBOX, skipOverlaps=true),
     @DirectCopyTransformMember(templateTokens = DirectCopyTransformTypes.SANDBOX_PRECLONE_INFORMATION, skipOverlaps=true)    
 })
-public class DigitalDownloadAttribute implements Serializable {
+public class SubscriptionOption implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "DigitalDownloadAttributeId")
+    @GeneratedValue(generator = "SubscriptionOptionId")
     @GenericGenerator(
-        name = "DigitalDownloadAttributeId",
+        name = "SubscriptionOptionId",
         strategy = "org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
         parameters = {
-            @Parameter(name = "segment_value", value = "DigitalDownloadAttribute"),
-            @Parameter(name = "entity_name", value = "com.drf.core.domain.entitlement.DigitalDownloadAttribute")
+            @Parameter(name = "segment_value", value = "SubscriptionOption"),
+            @Parameter(name = "entity_name", value = "com.drf.core.domain.subscription.SubscriptionOption")
         }
     )
-    @Column(name = "DIGITAL_DOWNLOAD_ATTRIBUTE_ID")
+    @Column(name = "SUBSCRIPTION_OPTION_ID")
     @AdminPresentation(visibility = VisibilityEnum.HIDDEN_ALL)
     protected Long id;
 
-    @ManyToOne(targetEntity = DigitalDownload.class, optional=false)
-    @JoinColumn(name = "DIGITAL_DOWNLOAD_ID")
-    @Index(name="DIGITAL_DOWNLOAD_INDEX", columnNames={"DIGITAL_DOWNLOAD_ID"})
-    protected DigitalDownload digitalDownload;
+    @ManyToOne(targetEntity = Subscription.class, optional=false)
+    @JoinColumn(name = "SUBSCRIPTION_ID")
+    @Index(name="SUBSCRIPTION_INDEX", columnNames={"SUBSCRIPTION_ID"})
+    protected Subscription subscription;
     
     @Column(name = "NAME", nullable=false)
-    @Index(name="DIGITAL_DOWNLOAD_ATTR_NAME_IDX", columnNames={"NAME"})
+    @Index(name="SUBSCRIPTION_OPTION_NAME_IDX", columnNames={"NAME"})
     @AdminPresentation(visibility = VisibilityEnum.HIDDEN_ALL)
     protected String name;
 
     /** The value. */
     @Column(name = "VALUE")
-    @AdminPresentation(friendlyName = "Attribute Value", prominent=true)
+    @AdminPresentation(friendlyName = "Option Value", prominent=true)
     protected String value;
     
 }
