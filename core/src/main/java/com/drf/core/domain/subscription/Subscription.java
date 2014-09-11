@@ -97,10 +97,11 @@ public class Subscription implements Serializable {
     @MapKey(name="name")
     @BatchSize(size = 50)
     @AdminPresentationMap(friendlyName = "Option",
-        deleteEntityUponRemove = true, keyPropertyFriendlyName = "Option Name",
+        deleteEntityUponRemove = true,
         keys = {
             @AdminPresentationMapKey(keyName = "NUMBER_OF_CARDS", friendlyKeyName = "Number of Cards"),
-            @AdminPresentationMapKey(keyName = "TRACK", friendlyKeyName = "Track")
+            @AdminPresentationMapKey(keyName = "TRACK", friendlyKeyName = "Track"),
+            @AdminPresentationMapKey(keyName = "RACE_DATE_RANGE", friendlyKeyName = "Race Date Range")
         }
     )
     @ClonePolicyMap
