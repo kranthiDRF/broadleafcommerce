@@ -42,7 +42,8 @@
             <plugins>
                 <plugin>
                     <!-- Needed for Eclipse Indigo -->
-                    <!-- This plugin does not actually exist, but is instead read by Eclipse for configuration purposes -->
+                    <!-- This plugin does not actually exist, but is instead 
+                        read by Eclipse for configuration purposes -->
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
                     <version>1.0.0</version>
@@ -159,7 +160,8 @@
                     <configuration>
                         <excludeDefaultDirectories>true</excludeDefaultDirectories>
                         <filesets>
-                            <!-- delete directories that will be generated when you start the develpment server/client in eclipse -->
+                            <!-- delete directories that will be generated 
+                                when you start the develpment server/client in eclipse -->
                             <fileset>
                                 <directory>target</directory>
                                 <includes>
@@ -183,7 +185,8 @@
             </plugin>
         </plugins>
     </build>
-    <!-- These profiles are for Windows/Linux environments that cannot find tools.jar and regularly run from Eclipse. -->
+    <!-- These profiles are for Windows/Linux environments that cannot find 
+        tools.jar and regularly run from Eclipse. -->
     <profiles>
         <profile>
             <id>default-profile</id>
@@ -212,15 +215,15 @@
     </profiles>
     <dependencyManagement>
         <dependencies>
-            <!-- Activated by the profiles above for the paths to tools.jar-->
+            <!-- Activated by the profiles above for the paths to tools.jar -->
             <dependency>
                 <groupId>com.sun</groupId>
                 <artifactId>tools</artifactId>
                 <version>[1.6,)</version>
-               <scope>system</scope>
-               <systemPath>${toolsjar}</systemPath>
+                <scope>system</scope>
+                <systemPath>${toolsjar}</systemPath>
             </dependency>
-            
+
             <dependency>
                 <groupId>com.drf</groupId>
                 <artifactId>core</artifactId>

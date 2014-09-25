@@ -5,6 +5,7 @@
            <module name="org.hibernate"/>
            <module name="org.javassist"/>
            <module name="org.apache.log4j" />
+           <module name="com.google.guava" />
         </exclusions>
         <dependencies>
             <module name="org.jboss.ironjacamar.jdbcadapters" slot="main"/>
