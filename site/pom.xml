@@ -14,14 +14,15 @@
     <properties>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- httpsPort and httpPort are used by embeded jetty server.-->
-        <!-- Make sure the following httpsPort matches what's in the runtime-properties file,  -->
-        <httpsPort>8443</httpsPort> 
+        <!-- httpsPort and httpPort are used by embeded jetty server. -->
+        <!-- Make sure the following httpsPort matches what's in the runtime-properties 
+            file, -->
+        <httpsPort>8443</httpsPort>
         <httpPort>8080</httpPort>
     </properties>
     <build>
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-        <finalName>drf</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -32,41 +33,15 @@
             </plugin>
 
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.5.v20120716</version>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
                 <configuration>
-                    <webAppSourceDirectory>${webappDirectory}</webAppSourceDirectory>
-                    <contextPath>/</contextPath>
-                    
-                    <!-- !!!!! WARNING !!!!!! -->
-                    <!-- This configuration of Jetty is not as secure as it causes Sessions to use a java.util.Random
-                        vs. java.security.SecureRandom. This speeds up startup times locally but this should not be used
-                        in production -->
-                    <jettyXml>jetty-server.xml</jettyXml>
-                    <!-- !!!!! WARNING !!!!!! -->
-                    
-                    <stopPort>9966</stopPort>
-                    <stopKey>foo</stopKey>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>${httpPort}</port>
-                            
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                        <connector implementation="org.eclipse.jetty.server.ssl.SslSelectChannelConnector">
-                            <port>${httpsPort}</port>
-                            <keystore>${webappDirectory}/WEB-INF/blc-example.keystore</keystore>
-                            <keyPassword>broadleaf</keyPassword>
-                            <password>broadleaf</password>
-                        </connector>
-                    </connectors>
-                    <webAppConfig>
-                         <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
-                    </webAppConfig>
+                    <username>drf</username>
+                    <password>drf</password>
                 </configuration>
             </plugin>
-        
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>keytool-maven-plugin</artifactId>
@@ -96,7 +71,7 @@
                     <keyalg>RSA</keyalg>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.zeroturnaround</groupId>
                 <artifactId>jrebel-maven-plugin</artifactId>
@@ -114,7 +89,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -129,7 +104,7 @@
                     <port>${httpPort}</port>
                 </configuration>
             </plugin>
-            
+
         </plugins>
     </build>
     <dependencies>
