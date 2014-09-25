@@ -21,14 +21,14 @@ set JAVA_HOME in the standalone configuration file located at `<WildFly director
 set JAVA_HOME=C:\Java\jdk1.7.0_60
 ```
 
-1. Replace your `<WildFly directory>\standalone\configuration\standalone.xml` with [this file](setup/standalone.xml)
-1. Copy the [keystore file](setup/blc-example.keystore) to `<WildFly directory>\standalone\configuration\`. (PS:There is a whole another tutorial for generating your own keys. But this should work for dev setup)
+1. Replace your `<WildFly directory>\standalone\configuration\standalone.xml` with [this file](client-drf/tree/setup/standalone.xml)
+1. Copy the [keystore file](client-drf/tree/setup/blc-example.keystore) to `<WildFly directory>\standalone\configuration\`. (PS:There is a whole another tutorial for generating your own keys. But this should work for dev setup)
 1. Use the script `<WildFly directory>\bin\standalone.bat` to start the WildFly server and check the installation. After startup, you should be able to access the web server at http://localhost:8080.
 1. Open the link Administration Console located at http://localhost:9990 and follow the instructions to add a new management user.
 
 ### Install the MySQL Driver jar file
 1. Create a new directory structure for your driver in your JBoss installation (`<WildFly directory>/modules/com/mysql/jdbc/main`)
-1. Copy your the [mysql JDBC driver jar](setup/mysql-connector-java-5.1.32.jar) into the "main" directory you just created
+1. Copy your the [mysql JDBC driver jar](client-drf/tree/setup/mysql-connector-java-5.1.32.jar) into the "main" directory you just created
 1. Create a module.xml file in the "main" directory. Here are its contents:
 
 ```xml
@@ -57,7 +57,7 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/lib/jrebel/jrebel.jar -Drebel.thymeleaf_pl
 JAVA_OPTS="$JAVA_OPTS -javaagent:/Users/phillipverheyden/broadleaf/client-drf/setup/spring-instrument-4.1.0.RELEASE.jar"
 ```
 
-You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](setup/spring-instrument-4.1.0.RELEASE) of the project.
+You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](client-drf/tree/setup/spring-instrument-4.1.0.RELEASE) of the project.
 
 
 ## Installing MySQL
