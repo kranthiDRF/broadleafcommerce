@@ -46,7 +46,7 @@ set JAVA_HOME=C:\Java\jdk1.7.0_60
 ```
 
 ### Update `JAVA_OPTS` for debugging, spring-instrument and jrebel
-1. Open up `<WildFly directory>\bin\stadnalone.conf` and add this snippet at the bottom of the file:
+1. Open up `<WildFly directory>\bin\standalone.conf` and add this snippet at the bottom of the file:
 
 ```
 # Setup remote debugger
@@ -57,7 +57,7 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/lib/jrebel/jrebel.jar -Drebel.thymeleaf_pl
 JAVA_OPTS="$JAVA_OPTS -javaagent:/Users/phillipverheyden/broadleaf/client-drf/setup/spring-instrument-4.1.0.RELEASE.jar"
 ```
 
-You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](client-drf/tree/setup/spring-instrument-4.1.0.RELEASE) of the project.
+You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](setup/spring-instrument-4.1.0.RELEASE) of the project.
 
 
 ## Installing MySQL
