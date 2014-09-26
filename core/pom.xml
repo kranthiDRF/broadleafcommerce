@@ -82,9 +82,11 @@
             <groupId>com.broadleafcommerce</groupId>
             <artifactId>broadleaf-common-modules-enterprise</artifactId>
         </dependency>
-<!--         <dependency>
-            <groupId>com.broadleafcommerce</groupId>
-            <artifactId>broadleaf-subscription</artifactId>
-        </dependency> -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <!-- <dependency> <groupId>com.broadleafcommerce</groupId> <artifactId>broadleaf-subscription</artifactId> 
+            </dependency> -->
     </dependencies>
 </project>
