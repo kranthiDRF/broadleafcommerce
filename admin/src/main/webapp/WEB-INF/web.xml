@@ -137,5 +137,29 @@
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>admin2</env-entry-value>
     </env-entry>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/web</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/storage</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/secure</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/event</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 
 </web-app>

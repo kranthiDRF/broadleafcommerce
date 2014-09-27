@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <resource-ref>
+        <res-ref-name>jdbc/web</res-ref-name>
+        <jndi-name>java:/jdbc/web</jndi-name>
+    </resource-ref>
+    <resource-ref>
+        <res-ref-name>jdbc/storage</res-ref-name>
+        <jndi-name>java:/jdbc/storage</jndi-name>
+    </resource-ref>
+    <resource-ref>
+        <res-ref-name>jdbc/secure</res-ref-name>
+        <jndi-name>java:/jdbc/secure</jndi-name>
+    </resource-ref>
+    <resource-ref>
+        <res-ref-name>jdbc/event</res-ref-name>
+        <jndi-name>java:/jdbc/event</jndi-name>
+    </resource-ref>
+</jboss-web>
