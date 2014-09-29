@@ -15,7 +15,7 @@ These should be sufficient to get up and running locally with the DRF Digital eC
 1.  Get the latest stable version of the WildFly Application Server (8.1.0.Final) from http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip.
 1. Extract the zip archive to a directory on your computer, e.g. C:\app. The path must not contain any spaces. A new directory, e.g. C:\app\wildfly-8.1.0.Final, containing the WildFly files will be created.
 1. Create an environment variable called JBOSS_HOME that points to the WildFly installation directory, for example `C:\app\wildfly-8.1.0.Final and append %JBOSS_HOME%\bin` to your Path variable.
-set JAVA_HOME in the standalone configuration file located at `<WildFly directory>\bin\standaloneconf.conf` by adding the below property to the file
+set JAVA_HOME in the standalone configuration file located at `<WildFly directory>\bin\standaloneconf.conf.bat` by adding the below property to the file
 
 ```
 set JAVA_HOME=C:\Java\jdk1.7.0_60
@@ -27,7 +27,7 @@ set JAVA_HOME=C:\Java\jdk1.7.0_60
 1. Open the link Administration Console located at http://localhost:9990 and follow the instructions to add a new management user.
 
 ### Install the MySQL Driver jar file
-1. Create a new directory structure for your driver in your JBoss installation (`<WildFly directory>/modules/com/mysql/jdbc/main`)
+1. Create a new directory structure for your driver in your JBoss installation (`<WildFly directory>\modules\com\mysql\jdbc\main`)
 1. Copy your the [mysql JDBC driver jar](setup/mysql-connector-java-5.1.32.jar) into the "main" directory you just created
 1. Create a module.xml file in the "main" directory. Here are its contents:
 
@@ -46,15 +46,15 @@ set JAVA_HOME=C:\Java\jdk1.7.0_60
 ```
 
 ### Update `JAVA_OPTS` for debugging, spring-instrument and jrebel
-1. Open up `<WildFly directory>\bin\standalone.conf` and add this snippet at the bottom of the file:
+1. Open up `<WildFly directory>\bin\standalone.conf.bat` and add this snippet at the bottom of the file:
 
 ```
 # Setup remote debugger
-JAVA_OPTS="$JAVA_OPTS -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+JAVA_OPTS="%JAVA_OPTS% -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
 # Add JRebel
-JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/lib/jrebel/jrebel.jar -Drebel.thymeleaf_plugin=true"
+JAVA_OPTS="%JAVA_OPTS% -javaagent:C:\path\to\jrebel.jar -Drebel.thymeleaf_plugin=true"
 # Add Spring Instrument
-JAVA_OPTS="$JAVA_OPTS -javaagent:/Users/phillipverheyden/broadleaf/client-drf/setup/spring-instrument-4.1.0.RELEASE.jar"
+JAVA_OPTS="%JAVA_OPTS% -javaagent:C:\path\to\githubproject\client-drf\setup\spring-instrument-4.1.0.RELEASE.jar"
 ```
 
 You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](setup/spring-instrument-4.1.0.RELEASE.jar) of the project.
