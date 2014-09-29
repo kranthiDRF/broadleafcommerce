@@ -1,4 +1,4 @@
-package com.drf.core.domain.subscription;
+package com.drf.core.subscription.domain;
 
 import org.broadleafcommerce.common.BroadleafEnumerationType;
 

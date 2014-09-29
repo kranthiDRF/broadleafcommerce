@@ -1,4 +1,4 @@
-package com.drf.core.domain.subscription;
+package com.drf.core.subscription.domain;
 
 import org.broadleafcommerce.common.extensibility.jpa.copy.DirectCopyTransform;
 import org.broadleafcommerce.common.extensibility.jpa.copy.DirectCopyTransformMember;
@@ -36,7 +36,7 @@ public class SubscriptionOption implements Serializable {
         strategy = "org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
         parameters = {
             @Parameter(name = "segment_value", value = "SubscriptionOption"),
-            @Parameter(name = "entity_name", value = "com.drf.core.domain.subscription.SubscriptionOption")
+            @Parameter(name = "entity_name", value = "com.drf.core.subscription.domain.SubscriptionOption")
         }
     )
     @Column(name = "SUBSCRIPTION_OPTION_ID")

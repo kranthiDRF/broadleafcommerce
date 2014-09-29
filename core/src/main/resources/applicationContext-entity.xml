@@ -23,6 +23,5 @@
     
     <!-- The system auto-creates a Sku (the defaultSku when creating a Product is auto-instantated without selecting a type)
         and it needs to create the correct subclass -->
-    <bean id="org.broadleafcommerce.core.catalog.domain.Sku"
-                    class="com.drf.core.domain.catalog.DRFSku" scope="prototype"/>
+    <bean id="org.broadleafcommerce.core.catalog.domain.Sku" class="com.drf.core.catalog.domain.DRFSku" scope="prototype"/>
 </beans>

@@ -6,9 +6,9 @@
              
     <persistence-unit name="blPU" transaction-type="RESOURCE_LOCAL">
         <non-jta-data-source>jdbc/web</non-jta-data-source>
-        <class>com.drf.core.domain.catalog.DRFSku</class>
-        <class>com.drf.core.domain.subscription.Subscription</class>
-        <class>com.drf.core.domain.subscription.SubscriptionOption</class>
+        <class>com.drf.core.catalog.domain.DRFSku</class>
+        <class>com.drf.core.subscription.domain.Subscription</class>
+        <class>com.drf.core.subscription.domain.SubscriptionOption</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     
