@@ -21,6 +21,8 @@ set JAVA_HOME in the standalone configuration file located at `<WildFly director
 set JAVA_HOME=C:\Java\jdk1.7.0_60
 ```
 
+> On Unix, use `<WildFly directory>\bin\standaloneconf.conf`
+
 1. Replace your `<WildFly directory>\standalone\configuration\standalone.xml` with [this file](setup/standalone.xml)
 1. Copy the [keystore file](setup/blc-example.keystore) to `<WildFly directory>\standalone\configuration\`. (PS:There is a whole another tutorial for generating your own keys. But this should work for dev setup)
 1. Use the script `<WildFly directory>\bin\standalone.bat` to start the WildFly server and check the installation. After startup, you should be able to access the web server at http://localhost:8080.
@@ -46,6 +48,7 @@ set JAVA_HOME=C:\Java\jdk1.7.0_60
 ```
 
 ### Update `JAVA_OPTS` for debugging, spring-instrument and jrebel
+#### Windows
 1. Open up `<WildFly directory>\bin\standalone.conf.bat` and add this snippet at the bottom of the file:
 
 ```
@@ -55,6 +58,18 @@ JAVA_OPTS="%JAVA_OPTS% -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspe
 JAVA_OPTS="%JAVA_OPTS% -javaagent:C:\path\to\jrebel.jar -Drebel.thymeleaf_plugin=true"
 # Add Spring Instrument
 JAVA_OPTS="%JAVA_OPTS% -javaagent:C:\path\to\githubproject\client-drf\setup\spring-instrument-4.1.0.RELEASE.jar"
+```
+
+#### Linux/OSX
+1. Open up `<WildFly directory>\bin\standalone.conf` and add this snippet at the bottom of the file:
+
+```
+# Setup remote debugger
+JAVA_OPTS="$JAVA_OPTS -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+# Add JRebel
+JAVA_OPTS="$JAVA_OPTS -javaagent:/full/path/to/jrebel.jar -Drebel.thymeleaf_plugin=true"
+# Add Spring Instrument
+JAVA_OPTS="$JAVA_OPTS -javaagent:/full/path/to/githubproject/client-drf/setup/spring-instrument-4.1.0.RELEASE.jar"
 ```
 
 You will need to change the paths to refer to the actual locations of the jar files. You can download the JRebel jar from https://zeroturnaround.com/software/jrebel/download/ and `spring-instrument` is included in the [setup directory](setup/spring-instrument-4.1.0.RELEASE.jar) of the project.
