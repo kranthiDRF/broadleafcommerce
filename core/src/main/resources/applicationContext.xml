@@ -24,6 +24,8 @@
     <context:component-scan base-package="com.drf.sample" />
 
     <context:component-scan base-package="com.broadleafcommerce.demo"/>
+    
+    <context:component-scan base-package="com.drf.core" />
 
     <bean id="blMergedDataSources" class="org.springframework.beans.factory.config.MapFactoryBean">
         <property name="sourceMap">
@@ -81,5 +83,8 @@
         <property name="targetRef" value="blPaymentGatewayConfigurationServices"/>
     </bean>
     <!-- /End DemoSite NullPaymentGateway Config -->
+    
+    <!-- Broadleaf service overrides. Entity overrides should go in applicationContext-entity.xml -->
+    <bean id="blOrderService" class="com.drf.core.order.service.DRFOrderService" />
 
 </beans>

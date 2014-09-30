@@ -9,6 +9,7 @@
         <class>com.drf.core.catalog.domain.DRFSku</class>
         <class>com.drf.core.subscription.domain.Subscription</class>
         <class>com.drf.core.subscription.domain.SubscriptionOption</class>
+        <class>com.drf.core.order.domain.DRFOrder</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

@@ -33,6 +33,7 @@
                blTranslationFilter,
                blPriceListRequestFilter,
                blCartStateFilter,
+               orderChannelFilter,
                blURLHandlerFilter"/>
         </sec:filter-chain-map>
     </bean>

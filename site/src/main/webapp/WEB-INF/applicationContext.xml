@@ -16,6 +16,8 @@
     
     <!-- Scan DemoSite Sample Payment Gateway Implementation -->
     <context:component-scan base-package="com.drf.sample" />
+    
+    <context:component-scan base-package="com.drf.web" />
 
     <!-- Add Sample Thymeleaf Processor to test Hosted Payment Gateway (e.g. PayPal Express Flow) -->
     <bean id="myNullPaymentGatewayHostedActionProcessor" class="com.drf.sample.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayHostedActionProcessor"/>
